@@ -5,6 +5,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 import authRoute from "./routes/auth";
+import historyRoute from "./routes/history";
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/api/login", authRoute);
+app.use("/api/history", historyRoute);
 
 export default app;
