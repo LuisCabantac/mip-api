@@ -4,6 +4,8 @@ import helmet from "helmet";
 import express from "express";
 import bodyParser from "body-parser";
 
+import authRoute from "./routes/auth";
+
 const app = express();
 
 app.use(helmet());
@@ -27,5 +29,7 @@ app.get("/", (_req, res) => {
     environment: process.env.NODE_ENV || "development",
   });
 });
+
+app.use("/api/login", authRoute);
 
 export default app;
