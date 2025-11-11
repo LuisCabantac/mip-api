@@ -1,4 +1,4 @@
-import { eq, inArray } from "drizzle-orm";
+import { desc, eq, inArray } from "drizzle-orm";
 import { Request, Response } from "express";
 
 import { db } from "../drizzle";
@@ -94,7 +94,7 @@ export async function deleteHistory(req: AuthenticatedRequest, res: Response) {
   }
 }
 
-export async function getHistories(req: AuthenticatedRequest, res: Response) {
+export async function getAllHistory(req: AuthenticatedRequest, res: Response) {
   try {
     const userId = req.user?.id;
 
@@ -109,7 +109,8 @@ export async function getHistories(req: AuthenticatedRequest, res: Response) {
     const userHistories = await db
       .select()
       .from(history)
-      .where(eq(history.userId, userId));
+      .where(eq(history.userId, userId))
+      .orderBy(desc(history.createdAt));
 
     return res.status(200).send({
       message: "Histories retrieved successfully",
