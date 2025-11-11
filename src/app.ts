@@ -12,7 +12,7 @@ app.use(
     origin:
       process.env.NODE_ENV === "production"
         ? [process.env.APP_URL ?? ""]
-        : "http://localhost:8080",
+        : "http://localhost:3000",
     credentials: true,
   })
 );
