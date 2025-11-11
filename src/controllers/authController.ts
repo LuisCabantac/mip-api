@@ -12,7 +12,7 @@ export async function signIn(req: Request, res: Response) {
 
     if (!email || !password) {
       return res.status(400).send({
-        message: "Missing required fields: email, or password.",
+        message: "Missing required fields: email, or password",
         error: "Bad Request",
         statusCode: 400,
       });
@@ -59,7 +59,7 @@ export async function signIn(req: Request, res: Response) {
     });
   } catch (error) {
     return res.status(500).send({
-      message: "An unexpected error occurred during signin. Please try again.",
+      message: "An unexpected error occurred during signin. Please try again",
       error: "Internal Server Error",
       statusCode: 500,
     });
@@ -73,7 +73,7 @@ export async function signUp(req: Request, res: Response) {
 
     if (!email || !password) {
       return res.status(400).send({
-        message: "Missing required fields: to_email, to_name, token, or url.",
+        message: "Missing required fields: to_email, to_name, token, or url",
         error: "Bad Request",
         statusCode: 400,
       });
@@ -114,7 +114,7 @@ export async function signUp(req: Request, res: Response) {
     });
   } catch (error) {
     return res.status(500).send({
-      message: "An unexpected error occurred during signup. Please try again.",
+      message: "An unexpected error occurred during signup. Please try again",
       error: "Internal Server Error",
       statusCode: 500,
     });
