@@ -33,5 +33,4 @@ async function seedUser() {
   }
 }
 
-// Run the seeder
 seedUser();
