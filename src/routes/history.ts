@@ -4,7 +4,7 @@ import { authenticateToken } from "../lib/token";
 import {
   createHistory,
   deleteHistory,
-  getHistories,
+  getAllHistory,
   getHistory,
 } from "../controllers/historyController";
 
@@ -18,6 +18,6 @@ router.delete("/", deleteHistory);
 
 router.post("/", createHistory);
 
-router.get("/", getHistories);
+router.get("/", getAllHistory);
 
 export default router;
