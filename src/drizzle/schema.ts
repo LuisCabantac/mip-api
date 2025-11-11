@@ -25,6 +25,12 @@ export const history = pgTable("history", {
       org: string;
       postal: string;
       timezone: string;
+      asn: string;
+      as_name: string;
+      as_domain: string;
+      country_code: string;
+      continent_code: string;
+      continent: string;
     }>()
     .notNull(),
   createdAt: timestamp("created_at")

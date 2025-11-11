@@ -10,6 +10,12 @@ export const geolocationDataSchema = z.object({
   org: z.string(),
   postal: z.string(),
   timezone: z.string(),
+  asn: z.string(),
+  as_name: z.string(),
+  as_domain: z.string(),
+  country_code: z.string(),
+  continent_code: z.string(),
+  continent: z.string(),
 });
 
 export const uuidSchema = z.uuidv4();
