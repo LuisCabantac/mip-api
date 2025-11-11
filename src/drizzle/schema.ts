@@ -1,14 +1,16 @@
 import { json, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const user = pgTable("user", {
-  id: uuid("id").primaryKey().notNull(),
+  id: uuid("id").primaryKey().defaultRandom().notNull(),
   email: text("email").notNull(),
   password: text("password").notNull(),
-  createdAt: timestamp("created_at").notNull(),
+  createdAt: timestamp("created_at")
+    .$defaultFn(() => new Date())
+    .notNull(),
 });
 
 export const history = pgTable("history", {
-  id: uuid("id").primaryKey().notNull(),
+  id: uuid("id").primaryKey().defaultRandom().notNull(),
   userId: uuid("user_id")
     .references(() => user.id)
     .notNull(),
@@ -25,5 +27,7 @@ export const history = pgTable("history", {
       timezone: string;
     }>()
     .notNull(),
-  createdAt: timestamp("created_at").notNull(),
+  createdAt: timestamp("created_at")
+    .$defaultFn(() => new Date())
+    .notNull(),
 });
