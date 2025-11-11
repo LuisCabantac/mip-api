@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { eq } from "drizzle-orm";
 import { Request, Response } from "express";
 
 import { db } from "../drizzle";
 import { user } from "../drizzle/schema";
+import { generateToken } from "../lib/token";
 
 export async function signIn(req: Request, res: Response) {
   try {
@@ -41,10 +41,10 @@ export async function signIn(req: Request, res: Response) {
       });
     }
 
-    const token = jwt.sign(
-      { id: existingUser.id, email: existingUser.email },
-      process.env.JWT_SECRET ?? ""
-    );
+    const token = generateToken({
+      id: existingUser.id,
+      email: existingUser.email,
+    });
 
     return res.status(200).send({
       message: "Login successful",
